@@ -14,14 +14,10 @@ generator = pipeline(
     model="Qwen/Qwen2.5-0.5B-Instruct"
 )
 
-index = faiss.read_index(
-    r"C:\Users\Pooja\ecommerce_security_chatbot\security.index"
-)
+index = faiss.read_index("security.index")
 
-with open(
-    r"C:\Users\Pooja\ecommerce_security_chatbot\chunks.pkl",
-    "rb"
-) as file:
+
+with open("chunks.pkl", "rb") as file:
     chunks = pickle.load(file)
 
 question = st.text_input("Ask a security question:")
