@@ -118,13 +118,16 @@ if question.strip():
         )
 
         # 5. Show the final Cross-Encoder ranked evidence
-with st.expander("View Retrieved Evidence"):
-    for rank, (score, chunk_id, chunk) in enumerate(final_chunks):
-        st.write(f"Rank: {rank + 1}")
-        st.write(f"Chunk ID: {chunk_id}")
-        st.write(f"Cross-Encoder Score: {float(score):.4f}")
-        st.write(chunk)
-        st.write("---")
+                
+        with st.expander("View Retrieved Evidence"):
+            for rank, (score, chunk_id, chunk) in enumerate(final_chunks):
+                st.write(f"Rank: {rank + 1}")
+                st.write(f"Chunk ID: {chunk_id}")
+                st.write(
+                    f"Cross-Encoder Score: {float(score):.4f}"
+                )
+                st.write(chunk)
+                st.write("---")
 
         # 6. Generate an answer using only the retrieved context
         prompt = f"""
